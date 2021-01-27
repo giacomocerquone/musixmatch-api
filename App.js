@@ -1,9 +1,10 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import { StatusBar } from "react-native";
+import { StatusBar, StyleSheet } from "react-native";
 import { store, persistor } from "store";
 import Loading from "pages/Loading";
+
 import AppNavigator from "./App.nav";
 
 export default function App() {
@@ -17,11 +18,4 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+const styles = StyleSheet.create({});

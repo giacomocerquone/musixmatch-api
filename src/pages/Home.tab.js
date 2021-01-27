@@ -39,27 +39,18 @@ const HomeTab = () => {
         component={Home}
       />
       <Tab.Screen
-        name="Cart"
-        component={Cart}
+        name="Profile"
+        component={Profile}
         options={{
           tabBarIcon: (props) => <CartTabIcon {...props} />,
         }}
       />
       <Tab.Screen
-        name="Favourite"
-        component={Favourite}
+        name="Scoreboard"
+        component={Scoreboard}
         options={{
           tabBarIcon: ({ color }) => (
             <Feather name="heart" size={24} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Orders"
-        component={Orders}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <Feather name="user" size={24} color={color} />
           ),
         }}
       />
