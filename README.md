@@ -8,6 +8,12 @@ This application is made with Expo.
 yarn start
 ```
 
+## To start the test
+
+```
+yarn test
+```
+
 ## Requirements
 
-## Demo
+## Screens

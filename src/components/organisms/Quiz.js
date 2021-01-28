@@ -14,21 +14,28 @@ const Quiz = ({ finishGame, data }) => {
   const [points, setPoints] = useState(0);
   const [currIndex, setCurrIndex] = useState(0);
 
-  const goToNextCard = useCallback(() => {
-    if (carouselRef.current.currentIndex === cardsPerQuiz - 1) {
-      finishGame();
-      dispatch(userSlice.actions.updateUserStats({ points }));
-    } else {
-      setCurrIndex((i) => i + 1);
-      carouselRef.current.snapToNext();
-    }
-  }, [finishGame, dispatch, points]);
+  const goToNextCard = useCallback(
+    (p) => {
+      if (carouselRef.current.currentIndex === cardsPerQuiz - 1) {
+        dispatch(userSlice.actions.updateUserStats({ points: p }));
+        finishGame();
+      } else {
+        setCurrIndex((i) => i + 1);
+        carouselRef.current.snapToNext();
+      }
+    },
+    [finishGame, dispatch]
+  );
 
   const onPressedAnswer = (artists, chosenId) => {
     if (artists[chosenId].right) {
-      setPoints((p) => p + 1);
+      setPoints((p) => {
+        goToNextCard(p + 1);
+        return p + 1;
+      });
+    } else {
+      goToNextCard(points);
     }
-    goToNextCard();
   };
 
   return (

@@ -1,8 +1,8 @@
 import axios from "axios";
 import * as endpoints from "constants/endpoints";
 import { apiKey } from "constants/keys";
-// import { showMessage } from "react-native-flash-message";
 import qs from "query-string";
+import { showMessage } from "react-native-flash-message";
 
 const api = axios.create({
   baseURL: endpoints.apiOrigin,
@@ -20,12 +20,6 @@ const apiReqInterceptor = (config) => {
 
 const errorReq = (error) => {
   console.log("Request error: ", error);
-  // showMessage({
-  //   message: "Si è verificato un errore!",
-  //   description: "Sembra ci sia un problema con la connessione",
-  //   type: "warning",
-  // });
-
   Promise.reject(error);
 };
 
@@ -36,24 +30,22 @@ const apiErrorRes = async (error) => {
   }
 
   const {
-    config,
-    response: { status, data },
+    response: { status },
   } = error;
 
   if (error?.message === "Network Error") {
-    // showMessage({
-    //   message: "Non sei connesso!",
-    //   description:
-    //     "Non hai un connessione attiva funzionante, nuovi dati saranno scaricati quando sarà tornata la linea.",
-    //   type: "warning",
-    // });
+    showMessage({
+      message: "Non sei connesso!",
+      description: "Non hai un connessione attiva funzionante.",
+      type: "warning",
+    });
   } else if (status >= 500) {
-    // showMessage({
-    //   message: "Si è verificato un errore!",
-    //   description:
-    //     "Sembra ci sia qualche problema con i nostri server, riprova più tardi!",
-    //   type: "danger",
-    // });
+    showMessage({
+      message: "Si è verificato un errore!",
+      description:
+        "Sembra ci sia qualche problema con i nostri server, riprova più tardi!",
+      type: "danger",
+    });
   }
 
   return Promise.reject(error);

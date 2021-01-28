@@ -1,8 +1,9 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import { StatusBar, StyleSheet } from "react-native";
+import { StatusBar } from "react-native";
 import { store, persistor } from "store";
+import FlashMessage from "react-native-flash-message";
 
 import AppNavigator from "./App.nav";
 
@@ -12,9 +13,8 @@ export default function App() {
       <StatusBar barStyle="light-content" translucent />
       <PersistGate loading={<></>} persistor={persistor}>
         <AppNavigator />
+        <FlashMessage position="top" />
       </PersistGate>
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({});

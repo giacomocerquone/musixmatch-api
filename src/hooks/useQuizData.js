@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { cardsPerQuiz } from "constants/params";
 import pickRandomElements from "utils/pickRandomElements";
 import shuffleArray from "utils/shuffleArray";
+import { showMessage } from "react-native-flash-message";
 
 export const fetchData = async (setStatus, setData) => {
   setStatus("pending");
@@ -66,13 +67,18 @@ export const fetchData = async (setStatus, setData) => {
     setData(data);
     setStatus("fulfilled");
   } catch (e) {
-    console.log(e);
+    showMessage({
+      message: "Si è verificato un errore!",
+      description:
+        "Sembra ci sia qualche problema con i nostri server, riprova più tardi!",
+      type: "danger",
+    });
     setStatus("rejected");
   }
 };
 
 const useQuizData = (playing) => {
-  const [status, setStatus] = useState("fulfilled");
+  const [status, setStatus] = useState("idle");
   const [data, setData] = useState([]);
 
   useEffect(() => {

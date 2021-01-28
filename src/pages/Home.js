@@ -22,15 +22,13 @@ const Home = () => {
       {playing && status === "fulfilled" ? (
         <Quiz finishGame={() => setPlaying(false)} data={data} />
       ) : (
-        <>
+        <View style={styles.mainContent}>
           {status === "pending" ? (
             <ActivityIndicator size="large" color={magenta} />
           ) : (
-            <View style={styles.mainContent}>
-              <Button label="Inizia" onPress={() => setPlaying(true)} />
-            </View>
+            <Button label="Inizia" onPress={() => setPlaying(true)} />
           )}
-        </>
+        </View>
       )}
     </SafeAreaView>
   );

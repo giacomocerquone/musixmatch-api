@@ -25,6 +25,7 @@ const Scoreboard = () => {
         stickyHeaderIndices={[0]}
         ListHeaderComponent={<Header title="Punteggi" />}
         contentContainerStyle={styles.list}
+        keyExtractor={(item, index) => index.toString()}
       />
     </SafeAreaView>
   );
