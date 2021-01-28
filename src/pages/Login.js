@@ -1,6 +1,7 @@
+import Button from "components/atoms/Button";
 import TextInput from "components/atoms/TextInput";
 import React, { useState } from "react";
-import { StyleSheet, Button, SafeAreaView } from "react-native";
+import { StyleSheet, SafeAreaView } from "react-native";
 import { useDispatch } from "react-redux";
 import userSlice from "reducers/user";
 
@@ -22,7 +23,7 @@ const Login = () => {
       <Button
         disabled={!username}
         onPress={onSubmit}
-        title="Inizia a giocare"
+        label="Inizia a giocare"
       />
     </SafeAreaView>
   );
