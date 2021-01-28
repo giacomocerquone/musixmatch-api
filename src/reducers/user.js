@@ -13,6 +13,13 @@ const userSlice = createSlice({
       return {
         ...state,
         currUser: payload.username,
+        usersStats: {
+          ...state.usersStats,
+          [payload.username]: {
+            nGames: 0,
+            points: 0,
+          },
+        },
       };
     },
     logout(state) {

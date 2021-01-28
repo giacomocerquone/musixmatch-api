@@ -11,7 +11,7 @@ const persistConfig = {
   key: "primary",
   storage: AsyncStorage,
   version: 0,
-  blacklist: ["user"],
+  whitelist: ["user"],
 };
 const persistedReducer = persistReducer(persistConfig, appReducer);
 
@@ -21,4 +21,4 @@ export default persistedReducer;
 
 export const getCurrUser = (state) => fromUser.getCurrUser(state.user);
 export const getUserStats = (state, username) =>
-  fromUser.getUserStats(state, username);
+  fromUser.getUserStats(state.user, username);

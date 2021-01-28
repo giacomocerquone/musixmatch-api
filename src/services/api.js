@@ -10,7 +10,9 @@ const api = axios.create({
 const apiReqInterceptor = (config) => {
   console.log("Api request sent:", config.url, config.baseURL);
 
-  config.params.apikey = apiKey;
+  console.log(config.params);
+
+  // config.params.apikey = apiKey;
   return config;
 };
 

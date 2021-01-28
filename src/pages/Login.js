@@ -17,6 +17,7 @@ const Login = () => {
         value={username}
         onChangeText={setUsername}
         placeholder="Inserisci un username"
+        autoCapitalize="none"
       />
       <Button
         disabled={!username}
