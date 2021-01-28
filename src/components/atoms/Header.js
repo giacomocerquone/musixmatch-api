@@ -4,10 +4,10 @@ import { StyleSheet, View } from "react-native";
 
 import GenericText from "./GenericText";
 
-const Header = ({ title }) => {
+const Header = ({ title, style }) => {
   return (
-    <View style={styles.header}>
-      <GenericText text={title} size={40} />
+    <View style={[styles.header, style]}>
+      <GenericText text={title} size={40} weight="bold" />
     </View>
   );
 };
