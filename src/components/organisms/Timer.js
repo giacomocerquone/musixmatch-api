@@ -14,6 +14,7 @@ const Timer = ({ onExpiration }) => {
   useEffect(() => {
     if (secs === 0) {
       onExpiration();
+      setSecs(secondsToAnswer);
     }
   }, [secs, onExpiration]);
 

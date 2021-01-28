@@ -1,5 +1,4 @@
 import QuizCard from "components/atoms/QuizCard";
-import Button from "components/atoms/Button";
 import React, { useCallback, useRef, useState } from "react";
 import { Dimensions, StyleSheet, View } from "react-native";
 import Carousel from "react-native-snap-carousel";
@@ -9,7 +8,7 @@ import userSlice from "reducers/user";
 
 import Timer from "./Timer";
 
-const Quiz = ({ finishGame }) => {
+const Quiz = ({ finishGame, data }) => {
   const carouselRef = useRef();
   const dispatch = useDispatch();
   const [points, setPoints] = useState(0);
@@ -32,27 +31,20 @@ const Quiz = ({ finishGame }) => {
 
   return (
     <>
-      <Timer onExpiration={goToNextCard} />
+      {/* <Timer onExpiration={goToNextCard} /> */}
       <View style={styles.mainContent}>
         <Carousel
-          carousel={carouselRef}
+          ref={carouselRef}
           containerCustomStyle={styles.carouselContainer}
-          data={[
-            "This is my life and that is yours",
-            "This is my life and that is yours",
-            "This is my life and that is yours",
-          ]}
+          data={data}
           sliderWidth={Dimensions.get("window").width}
           itemWidth={Dimensions.get("window").width - 50}
           scrollEnabled={false}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => <QuizCard item={item} />}
+          renderItem={({ item }) => (
+            <QuizCard item={item} onPressedAnswer={onPressedAnswer} />
+          )}
         />
-        <View>
-          <Button label="Renato bennato" onPress={onPressedAnswer} />
-          <Button label="A zio zia" onPress={onPressedAnswer} />
-          <Button label="A mio mia" onPress={onPressedAnswer} />
-        </View>
       </View>
     </>
   );

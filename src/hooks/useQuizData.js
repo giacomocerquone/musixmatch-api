@@ -1,10 +1,22 @@
 import { useEffect, useState } from "react";
 
 const useQuizData = (playing) => {
-  const [status, setStatus] = useState("idle");
+  const [status, setStatus] = useState("fulfilled");
   const [data, setData] = useState([
     {
-      lyrics: "",
+      lyrics: "ciao ciao ciao ciao",
+      artists: ["io", "tu", "lei"],
+    },
+    {
+      lyrics: "ciao ciao ciao ciao",
+      artists: ["io", "tu", "lei"],
+    },
+    {
+      lyrics: "ciao ciao ciao ciao",
+      artists: ["io", "tu", "lei"],
+    },
+    {
+      lyrics: "ciao ciao ciao ciao",
       artists: ["io", "tu", "lei"],
     },
   ]);
