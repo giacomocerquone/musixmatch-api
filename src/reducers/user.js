@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   currUser: "",
@@ -51,4 +51,13 @@ const userSlice = createSlice({
 export default userSlice;
 
 export const getCurrUser = (state) => state.currUser;
+// export const getStats = (state) => state.usersStats;
+export const getStats = createSelector(
+  [(state) => state.usersStats],
+  (usersStats) =>
+    Object.keys(usersStats).map((username) => ({
+      username,
+      ...usersStats[username],
+    }))
+);
 export const getUserStats = (state, username) => state.usersStats[username];

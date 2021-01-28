@@ -20,5 +20,6 @@ export default persistedReducer;
 // user
 
 export const getCurrUser = (state) => fromUser.getCurrUser(state.user);
+export const getStats = (state) => fromUser.getStats(state.user);
 export const getUserStats = (state, username) =>
   fromUser.getUserStats(state.user, username);

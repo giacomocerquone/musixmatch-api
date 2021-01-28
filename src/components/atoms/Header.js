@@ -1,3 +1,4 @@
+import { blue } from "constants/colors";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
@@ -15,6 +16,7 @@ export default Header;
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: 20,
+    paddingTop: 20,
+    backgroundColor: blue,
   },
 });
