@@ -8,7 +8,9 @@ import { getStats } from "store/app.reducer";
 
 const ScoreRow = ({ item }) => {
   return (
-    <GenericText text={`${item.username} - ${item.points} - ${item.nGames}`} />
+    <GenericText
+      text={`${item.username}, ${item.points} punti in ${item.nGames} partite`}
+    />
   );
 };
 
