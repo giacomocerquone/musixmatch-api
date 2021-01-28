@@ -1,25 +1,47 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  username: '',
+  currUser: "",
+  usersStats: {},
 };
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
     login(state, { payload }) {
       return {
         ...state,
-        ...payload,
+        currUser: payload.username,
       };
     },
-    logout() {
-      return initialState;
+    logout(state) {
+      return {
+        ...state,
+        currUser: "",
+      };
+    },
+    updateUserStats(state, { payload }) {
+      return {
+        ...state,
+        usersStats: {
+          ...state.usersStats,
+          [payload.username]: {
+            ...state.usersStats[payload.username],
+            ...payload,
+          },
+        },
+      };
+    },
+    delUserStats(state, { payload }) {
+      const newStats = { ...state.usersStats };
+      delete newStats[payload.username];
+      return { ...state, usersStats: newStats };
     },
   },
 });
 
 export default userSlice;
 
-export const getUsername = (state) => state.username;
+export const getCurrUser = (state) => state.currUser;
+export const getUserStats = (state, username) => state.usersStats[username];

@@ -1,12 +1,20 @@
+import Header from "components/atoms/Header";
 import React from "react";
-import { View, Text } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 
 const Scoreboard = () => {
   return (
-    <View>
-      <Text></Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Header title="Punteggi" />
+    </SafeAreaView>
   );
 };
 
 export default Scoreboard;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginHorizontal: 20,
+  },
+});

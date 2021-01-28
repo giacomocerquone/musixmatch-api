@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as endpoints from "constants/endpoints";
+import { apiKey } from "constants/keys";
 // import { showMessage } from "react-native-flash-message";
 
 const api = axios.create({
@@ -9,16 +10,7 @@ const api = axios.create({
 const apiReqInterceptor = (config) => {
   console.log("Api request sent:", config.url, config.baseURL);
 
-  // if (token) {
-  //   const headers = {
-  //     ...config.headers,
-  //     Authorization: `Bearer ${token}`,
-  //   };
-  //   return {
-  //     ...config,
-  //     headers,
-  //   };
-  // }
+  config.params.apikey = apiKey;
   return config;
 };
 

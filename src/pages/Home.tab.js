@@ -1,7 +1,7 @@
 import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { Feather } from "@expo/vector-icons";
-import CartTabIcon from "components/atoms/CartTabIcon";
+import { AntDesign } from "@expo/vector-icons";
+import { blue, magenta } from "constants/colors";
 
 import Home from "./Home";
 import Scoreboard from "./Scoreboard";
@@ -14,16 +14,16 @@ const HomeTab = () => {
     <Tab.Navigator
       tabBarPosition="bottom"
       sceneContainerStyle={{
-        backgroundColor: "#FEF4F3",
+        backgroundColor: blue,
       }}
       tabBarOptions={{
         style: {
-          backgroundColor: "#fff",
+          backgroundColor: magenta,
           paddingBottom: 30,
           paddingTop: 10,
         },
-        activeTintColor: "#ab2431",
-        inactiveTintColor: "#999999",
+        activeTintColor: "#fff",
+        inactiveTintColor: blue,
         showLabel: false,
         showIcon: true,
         renderIndicator: () => null,
@@ -33,7 +33,7 @@ const HomeTab = () => {
         name="Home"
         options={{
           tabBarIcon: ({ color }) => (
-            <Feather name="book-open" size={24} color={color} />
+            <AntDesign name="home" size={24} color={color} />
           ),
         }}
         component={Home}
@@ -42,7 +42,9 @@ const HomeTab = () => {
         name="Profile"
         component={Profile}
         options={{
-          tabBarIcon: (props) => <CartTabIcon {...props} />,
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="user" size={24} color={color} />
+          ),
         }}
       />
       <Tab.Screen
@@ -50,7 +52,7 @@ const HomeTab = () => {
         component={Scoreboard}
         options={{
           tabBarIcon: ({ color }) => (
-            <Feather name="heart" size={24} color={color} />
+            <AntDesign name="dashboard" size={24} color={color} />
           ),
         }}
       />

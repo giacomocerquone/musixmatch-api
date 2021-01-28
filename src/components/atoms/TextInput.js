@@ -30,12 +30,8 @@ export default function TextInput(props) {
 
 const styles = StyleSheet.create({
   input: {
-    flex: 1,
-    height: 46,
     fontSize: 16,
-    lineHeight: 20,
     color: "#fff",
     borderRadius: 4,
-    fontFamily: "Poppins_500Medium",
   },
 });

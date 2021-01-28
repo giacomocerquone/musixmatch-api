@@ -1,12 +1,20 @@
+import Header from "components/atoms/Header";
 import React from "react";
-import { View, Text } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 
 const Home = () => {
   return (
-    <View>
-      <Text></Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Header title="Gioca" />
+    </SafeAreaView>
   );
 };
 
 export default Home;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginHorizontal: 20,
+  },
+});
