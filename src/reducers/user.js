@@ -10,16 +10,19 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     login(state, { payload }) {
+      const newStats = {
+        ...state.usersStats,
+        [payload.username]: {
+          nGames: 0,
+          points: 0,
+        },
+      };
       return {
         ...state,
         currUser: payload.username,
-        usersStats: {
-          ...state.usersStats,
-          [payload.username]: {
-            nGames: 0,
-            points: 0,
-          },
-        },
+        usersStats: state.usersStats[payload.username]
+          ? state.usersStats
+          : newStats,
       };
     },
     logout(state) {
@@ -29,13 +32,14 @@ const userSlice = createSlice({
       };
     },
     updateUserStats(state, { payload }) {
+      const userStats = state.usersStats[payload.username];
       return {
         ...state,
         usersStats: {
           ...state.usersStats,
           [payload.username]: {
-            ...state.usersStats[payload.username],
-            ...payload,
+            nGames: userStats.nGames + 1,
+            points: userStats.points + payload.points,
           },
         },
       };
@@ -43,7 +47,7 @@ const userSlice = createSlice({
     delUserStats(state, { payload }) {
       const newStats = { ...state.usersStats };
       delete newStats[payload.username];
-      return { ...state, usersStats: newStats };
+      return { ...state, currUser: "", usersStats: newStats };
     },
   },
 });
@@ -51,7 +55,6 @@ const userSlice = createSlice({
 export default userSlice;
 
 export const getCurrUser = (state) => state.currUser;
-// export const getStats = (state) => state.usersStats;
 export const getStats = createSelector(
   [(state) => state.usersStats],
   (usersStats) =>

@@ -5,7 +5,9 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "lint": "eslint './src/**/*.js'",
+    "test": "jest --watch"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",
@@ -36,8 +38,18 @@
     "redux-persist": "^6.0.0"
   },
   "devDependencies": {
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0",
     "@babel/core": "~7.9.0",
     "babel-plugin-module-resolver": "^4.1.0"
+  },
+  "jest": {
+    "setupFiles": [
+      "./node_modules/react-native-gesture-handler/jestSetup.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-(native|universal|navigation)-(.*)|@react-native-community/(.*)|@react-navigation/(.*)|bs-platform)"
+    ]
   },
   "private": true
 }
