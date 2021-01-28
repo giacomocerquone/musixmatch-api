@@ -17,3 +17,8 @@ yarn test
 ## Requirements
 
 ## Screens
+
+![Home](./repo/home.png)
+![Login](./repo/login.png)
+![Profile](./repo/profile.png)
+![Scoreboard](./repo/scoreboard.png)
