@@ -19,7 +19,9 @@ const Profile = () => {
       <View style={styles.mainContent}>
         <GenericText text="Hai accumulato" />
         <GenericText text={userScore?.points || "0"} size={40} weight="bold" />
-        <GenericText text="punti!" />
+        <GenericText
+          text={`punti nelle ultime ${userScore?.nGames || "0"} partite`}
+        />
       </View>
       <Button
         onPress={() => dispatch(userSlice.actions.logout())}

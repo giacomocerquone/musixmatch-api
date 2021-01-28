@@ -1,21 +1,18 @@
 import api from "services/api";
 import * as endpoints from "constants/endpoints";
-import queryString from "query-string";
 
 export const fetchTopSongs = async (params) => {
   try {
-    const body = queryString.stringify(params);
-    const res = await api.get(endpoints.topSongs, body);
+    const res = await api.get(endpoints.topSongs, { params });
     return res;
   } catch (e) {
     throw e;
   }
 };
 
-export const fetchSongLyrics = async (params) => {
+export const fetchSongSnippet = async (params) => {
   try {
-    const body = queryString.stringify(params);
-    const res = await api.get(endpoints.songLyrics, body);
+    const res = await api.get(endpoints.songSnippet, { params });
     return res;
   } catch (e) {
     throw e;

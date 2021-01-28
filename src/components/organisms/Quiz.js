@@ -12,18 +12,20 @@ const Quiz = ({ finishGame, data }) => {
   const carouselRef = useRef();
   const dispatch = useDispatch();
   const [points, setPoints] = useState(0);
+  const [currIndex, setCurrIndex] = useState(0);
 
   const goToNextCard = useCallback(() => {
     if (carouselRef.current.currentIndex === cardsPerQuiz - 1) {
       finishGame();
       dispatch(userSlice.actions.updateUserStats({ points }));
     } else {
+      setCurrIndex((i) => i + 1);
       carouselRef.current.snapToNext();
     }
   }, [finishGame, dispatch, points]);
 
-  const onPressedAnswer = () => {
-    if (true) {
+  const onPressedAnswer = (artists, chosenId) => {
+    if (artists[chosenId].right) {
       setPoints((p) => p + 1);
     }
     goToNextCard();
@@ -31,7 +33,7 @@ const Quiz = ({ finishGame, data }) => {
 
   return (
     <>
-      {/* <Timer onExpiration={goToNextCard} /> */}
+      <Timer onExpiration={goToNextCard} currIndex={currIndex} />
       <View style={styles.mainContent}>
         <Carousel
           ref={carouselRef}

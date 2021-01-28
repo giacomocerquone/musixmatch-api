@@ -2,17 +2,19 @@ import axios from "axios";
 import * as endpoints from "constants/endpoints";
 import { apiKey } from "constants/keys";
 // import { showMessage } from "react-native-flash-message";
+import qs from "query-string";
 
 const api = axios.create({
   baseURL: endpoints.apiOrigin,
+  paramsSerializer: (params) => {
+    return qs.stringify(params);
+  },
 });
 
 const apiReqInterceptor = (config) => {
   console.log("Api request sent:", config.url, config.baseURL);
 
-  console.log(config.params);
-
-  // config.params.apikey = apiKey;
+  config.params.apikey = apiKey;
   return config;
 };
 

@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import { SafeAreaView, StyleSheet, View } from "react-native";
+import {
+  ActivityIndicator,
+  SafeAreaView,
+  StyleSheet,
+  View,
+} from "react-native";
 import Header from "components/atoms/Header";
 import Button from "components/atoms/Button";
 import Quiz from "components/organisms/Quiz";
 import useQuizData from "hooks/useQuizData";
+import { magenta } from "constants/colors";
 
 const Home = () => {
   const [playing, setPlaying] = useState(false);
@@ -16,9 +22,15 @@ const Home = () => {
       {playing && status === "fulfilled" ? (
         <Quiz finishGame={() => setPlaying(false)} data={data} />
       ) : (
-        <View style={styles.mainContent}>
-          <Button label="Inizia" onPress={() => setPlaying(true)} />
-        </View>
+        <>
+          {status === "pending" ? (
+            <ActivityIndicator size="large" color={magenta} />
+          ) : (
+            <View style={styles.mainContent}>
+              <Button label="Inizia" onPress={() => setPlaying(true)} />
+            </View>
+          )}
+        </>
       )}
     </SafeAreaView>
   );

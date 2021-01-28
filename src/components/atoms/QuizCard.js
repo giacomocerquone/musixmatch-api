@@ -12,14 +12,18 @@ const QuizCard = ({ item, onPressedAnswer }) => {
         <GenericText
           style={styles.lyrics}
           color={blue}
-          text={item.lyrics}
+          text={item.snippet}
           uppercase
           size={30}
         />
       </View>
       <View style={styles.artistsContainer}>
-        {item.artists.map((a) => (
-          <Button label={a} onPress={onPressedAnswer} />
+        {item.artists.map((a, id) => (
+          <Button
+            key={a.name}
+            label={a.name}
+            onPress={() => onPressedAnswer(item.artists, id)}
+          />
         ))}
       </View>
     </>

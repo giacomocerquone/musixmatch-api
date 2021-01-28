@@ -4,7 +4,7 @@ import useInterval from "hooks/useInterval";
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 
-const Timer = ({ onExpiration }) => {
+const Timer = ({ onExpiration, currIndex }) => {
   const [secs, setSecs] = useState(secondsToAnswer);
 
   useInterval(() => {
@@ -17,6 +17,10 @@ const Timer = ({ onExpiration }) => {
       setSecs(secondsToAnswer);
     }
   }, [secs, onExpiration]);
+
+  useEffect(() => {
+    setSecs(secondsToAnswer);
+  }, [currIndex]);
 
   return (
     <View style={styles.timerContainer}>
