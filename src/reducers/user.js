@@ -32,12 +32,12 @@ const userSlice = createSlice({
       };
     },
     updateUserStats(state, { payload }) {
-      const userStats = state.usersStats[payload.username];
+      const userStats = state.usersStats[state.currUser];
       return {
         ...state,
         usersStats: {
           ...state.usersStats,
-          [payload.username]: {
+          [state.currUser]: {
             nGames: userStats.nGames + 1,
             points: userStats.points + payload.points,
           },

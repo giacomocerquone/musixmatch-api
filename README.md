@@ -1,6 +1,6 @@
 # MusixMatch job application workout
 
-This application is made in Expo.
+This application is made with Expo.
 
 ## To start the app
 
