@@ -40,7 +40,7 @@ const Quiz = ({ finishGame, data }) => {
 
   return (
     <>
-      <Timer onExpiration={goToNextCard} currIndex={currIndex} />
+      <Timer onExpiration={() => goToNextCard(points)} currIndex={currIndex} />
       <View style={styles.mainContent}>
         <Carousel
           ref={carouselRef}
